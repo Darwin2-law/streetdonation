@@ -1,0 +1,170 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+/* Container for Admin Login and Dashboard */
+.admin-container {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+
+/* Admin Login */
+#login-section h2 {
+  text-align: center;
+  color: #4CAF50;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginForm label {
+  margin: 10px 0 5px;
+  font-size: 16px;
+}
+
+#loginForm input {
+  padding: 10px;
+  width: 80%;
+  margin: 5px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#loginForm button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#loginForm button:hover {
+  background-color: #45a049;
+}
+
+/* Admin Dashboard */
+#dashboard-section h1 {
+  text-align: center;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+/* Story Upload Section */
+.admin-section {
+  margin-top: 20px;
+}
+
+.admin-section h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.admin-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.admin-section form label {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.admin-section form input,
+.admin-section form textarea {
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.admin-section form textarea {
+  height: 120px;
+}
+
+.admin-section form button {
+  padding: 12px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.admin-section form button:hover {
+  background-color: #45a049;
+}
+
+/* Media Preview Section */
+#uploadedMediaPreview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#uploadedMediaPreview img,
+#uploadedMediaPreview video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Button to go back to Home */
+.btn {
+  padding: 12px 25px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: #444;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .admin-container {
+      width: 95%;
+      padding: 15px;
+  }
+
+  .admin-section form {
+      width: 100%;
+  }
+}

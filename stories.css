@@ -1,0 +1,16 @@
+
+
+/* Icon Bar */
+.icon-bar {
+    background-color:yellow;
+  
+}
+
+.icon-bar a {
+    color: green;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

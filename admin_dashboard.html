@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- Admin Login Form -->
+<div id="login-section" class="admin-container">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+        <label for="adminPassword">Enter Password:</label>
+        <input type="password" id="adminPassword" name="adminPassword" required><br><br>
+        <button type="submit" class="btn">Login</button>
+    </form>
+</div>
+
+<!-- Admin Dashboard Section (hidden until login) -->
+<div id="dashboard-section" class="admin-container" style="display: none;">
+    <h1>Admin Dashboard</h1>
+
+    <!-- Section to upload a new story -->
+    <div class="admin-section">
+        <h2>Upload Story with Media</h2>
+        <form id="uploadStoryForm">
+            <label for="storyTitle">Story Title:</label>
+            <input type="text" id="storyTitle" name="storyTitle" required><br><br>
+
+            <label for="storyContent">Story Content:</label><br>
+            <textarea id="storyContent" name="storyContent" rows="5" required></textarea><br><br>
+
+            <label for="storyMedia">Upload Images/Videos:</label>
+            <input type="file" id="storyMedia" name="storyMedia" accept="image/*,video/*"><br><br>
+
+            <button type="submit" class="btn">Upload Story with Media</button>
+        </form>
+        <div id="uploadedMediaPreview"></div>
+    </div>
+
+    <!-- Back to Home Button -->
+    <a href="index.html"><button class="btn">Back to Home</button></a>
+</div>
+
+<script>
+    // Handle admin login
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevent form from reloading the page
+
+        const password = document.getElementById("adminPassword").value;
+
+        // Hardcoded password (change this in a real app)
+        const adminPassword = "admin123";  // Replace with your actual admin password
+
+        if (password === adminPassword) {
+            // Hide login and show admin dashboard
+            document.getElementById("login-section").style.display = "none";
+            document.getElementById("dashboard-section").style.display = "block";
+        } else {
+            alert("Incorrect password. Please try again.");
+        }
+    });
+
+    // Handle story upload
+    const uploadStoryForm = document.getElementById('uploadStoryForm');
+    const uploadedMediaPreview = document.getElementById('uploadedMediaPreview');
+
+    uploadStoryForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent form from reloading the page
+
+        const storyTitle = document.getElementById('storyTitle').value;
+        const storyContent = document.getElementById('storyContent').value;
+        const storyMedia = document.getElementById('storyMedia').files;
+
+        // Create a story object
+        const story = {
+            title: storyTitle,
+            content: storyContent,
+            media: storyMedia
+        };
+
+        // Show the uploaded media preview
+        if (storyMedia.length > 0) {
+            const media = storyMedia[0];
+            const mediaPreview = document.createElement('div');
+
+            if (media.type.startsWith('image')) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(media);
+                img.alt = media.name;
+                img.style.maxWidth = '200px';
+                mediaPreview.appendChild(img);
+            } else if (media.type.startsWith('video')) {
+                const video = document.createElement('video');
+                video.src = URL.createObjectURL(media);
+                video.controls = true;
+                video.style.maxWidth = '200px';
+                mediaPreview.appendChild(video);
+            }
+
+            uploadedMediaPreview.innerHTML = ''; // Clear previous preview
+            uploadedMediaPreview.appendChild(mediaPreview);
+        }
+
+        // Save the story data to localStorage (for demo purposes)
+        const storedStories = JSON.parse(localStorage.getItem('stories')) || [];
+        storedStories.push(story);
+        localStorage.setItem('stories', JSON.stringify(storedStories));
+
+        alert('Story uploaded successfully.');
+        window.location.href = "stories.html"; // Redirect to stories page
+    });
+</script>
+
+</body>
+</html>
